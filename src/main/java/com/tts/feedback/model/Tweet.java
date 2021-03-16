@@ -3,11 +3,11 @@ package com.tts.feedback.model;
 import java.util.Date;
 import java.util.List;
 
-        import javax.persistence.CascadeType;
-        import javax.persistence.Column;
-        import javax.persistence.Entity;
-        import javax.persistence.FetchType;
-        import javax.persistence.GeneratedValue;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
         import javax.persistence.GenerationType;
         import javax.persistence.Id;
         import javax.persistence.JoinColumn;
@@ -19,15 +19,7 @@ import java.util.List;
         import org.hibernate.annotations.OnDelete;
         import org.hibernate.annotations.OnDeleteAction;
 
-        import lombok.AllArgsConstructor;
-        import lombok.Builder;
-        import lombok.Data;
-        import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Tweet {
 
@@ -46,7 +38,27 @@ public class Tweet {
     @CreationTimestamp
     private Date createdAt;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "tweet_tag", joinColumns = @JoinColumn(name = "tweet_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }
