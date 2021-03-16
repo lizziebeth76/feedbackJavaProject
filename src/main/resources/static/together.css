@@ -1,0 +1,22 @@
+.background {
+    background-image: url(static/images/blueLearn.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.page-color {
+    background-color: rgb(255, 162, 0);
+}
+.surveys {
+    background-color: aqua;
+}
+#pizza {
+    background-color: rgb(247, 81, 98);
+}
+/* .instructor-image {
+    background-image: url(studentsSay.png);
+    background-size: cover;
+} */
+/* .student-image {
+    background-image: url(instructorSays.png);
+    background-size: cover;
+} */
