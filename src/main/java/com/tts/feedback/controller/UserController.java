@@ -1,13 +1,13 @@
 package com.tts.feedback.controller;
 
-import com.tts.feedback.model.TweetDisplay;
+//import com.tts.feedback.model.TweetDisplay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.tts.feedback.model.User;
-import com.tts.feedback.service.TweetService;
+//import com.tts.feedback.service.TweetService;
 import com.tts.feedback.service.UserService;
 
 import java.util.List;
@@ -16,8 +16,8 @@ import java.util.List;
 public class UserController<tweets, user> {
     @Autowired
     private UserService userService;
-    @Autowired
-    private TweetService tweetService;
+//    @Autowired
+//    private TweetService tweetService;
 
     @GetMapping(value = "/users/{username}")
     public String getUser(@PathVariable(value = "username") String username, Model model) {

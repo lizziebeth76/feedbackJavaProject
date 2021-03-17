@@ -49,8 +49,8 @@ public class User {
 
     @NotEmpty(message = "Please provide your last name")
     private String lastName;
-
-    private List<String> message;
+// THIS IS BEING TEMPORARILY COMMENTED TO ACCOMMODATE FUNCTIONALITY IN THE NOW
+//    private List<Response> response;
 
     //	  this has correlation to roles of a user
     private Integer active;
@@ -66,25 +66,25 @@ public class User {
     public User() {
     }
 
-    public User(@Email(message = "Please provide a valid email") @NotEmpty(message = "Please provide an email") String email, @Length(min = 3, message = "A username must have at least 3 characters") @Length(max = 15, message = "A username cannot have more than 15 characters") @Pattern(regexp = "[^\\s]+", message = "A username cannot contain spaces") String username, @Length(min = 5, message = "A password must have at least 5 characters") String password, @NotEmpty(message = "Please provide your first name") String firstName, @NotEmpty(message = "Please provide your last name") String lastName, List<String> message, Integer active, Date createdAt, Set<Role> roles) {
+    public User(@Email(message = "Please provide a valid email") @NotEmpty(message = "Please provide an email") String email, @Length(min = 3, message = "A username must have at least 3 characters") @Length(max = 15, message = "A username cannot have more than 15 characters") @Pattern(regexp = "[^\\s]+", message = "A username cannot contain spaces") String username, @Length(min = 5, message = "A password must have at least 5 characters") String password, @NotEmpty(message = "Please provide your first name") String firstName, @NotEmpty(message = "Please provide your last name") String lastName, Integer active, Date createdAt, Set<Role> roles) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.message = message;
+//        this.response = response;
         this.active = active;
         this.createdAt = createdAt;
         this.roles = roles;
     }
 
-    public List<String> getMessage() {
-        return message;
-    }
+//    public List<Response> getResponse() {
+//        return response;
+//    }
 
-    public void setMessage(List<String> message) {
-        this.message = message;
-    }
+//    public void setResponse(List<Response> response) {
+//        this.response = response;
+//    }
 
     public String getEmail() {
         return email;
