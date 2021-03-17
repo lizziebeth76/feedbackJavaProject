@@ -21,11 +21,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
 
-//below are lombok things - not using
-//@Data
-//@Builder
-//@AllArgsConstructor
-//@NoArgsConstructor
+
 //entity creates a table on a database
 @Entity
 public class User {
@@ -54,6 +50,8 @@ public class User {
     @NotEmpty(message = "Please provide your last name")
     private String lastName;
 
+    private List<String> message;
+
     //	  this has correlation to roles of a user
     private Integer active;
 
@@ -65,6 +63,28 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    public User() {
+    }
+
+    public User(@Email(message = "Please provide a valid email") @NotEmpty(message = "Please provide an email") String email, @Length(min = 3, message = "A username must have at least 3 characters") @Length(max = 15, message = "A username cannot have more than 15 characters") @Pattern(regexp = "[^\\s]+", message = "A username cannot contain spaces") String username, @Length(min = 5, message = "A password must have at least 5 characters") String password, @NotEmpty(message = "Please provide your first name") String firstName, @NotEmpty(message = "Please provide your last name") String lastName, List<String> message, Integer active, Date createdAt, Set<Role> roles) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.message = message;
+        this.active = active;
+        this.createdAt = createdAt;
+        this.roles = roles;
+    }
+
+    public List<String> getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<String> message) {
+        this.message = message;
+    }
 
     public String getEmail() {
         return email;
@@ -129,4 +149,5 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 }

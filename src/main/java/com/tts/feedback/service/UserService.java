@@ -21,6 +21,7 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     public User findByUsername(String username){
         return userRepository.findByUsername(username);
+
     }
 
     public User saveNewUser(User user) {

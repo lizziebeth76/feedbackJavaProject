@@ -11,10 +11,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
+<!--THYMELEAF FROM MICK'S ECOMMERCE, FOR REFERENCE:-->
+<!--<form th:action="@{/cart}" th:object="${product}" method="post">-->
+<!--    <input type="hidden"  th:field="*{id}"/>-->
+<!--    <button type="submit" class="btn btn-primary">Add to-->
+<!--        Cart</button>-->
+<!--</form>-->
 <body>
+<form th:action="@{/users/username}" th:object="${surveyResponse}" method="post">
 <div>
-    <h3>Please enter the name of the student you wish to share feedback with:</h3>
-    <input id = "userInput" type = "text" />
+    <h3>Please select the name of the student you wish to share feedback with:</h3>
+
+    <input id = "userInput" type = "dropdown" />
+
     <button id = "pizza"><em>click here</em></button>
     <br>
     <br>
@@ -45,5 +54,6 @@
         <a href="instructorFeedback.html" class="btn btn-primary">Submit and Continue to receive feedback</a>
     </div>
 </div>
+</form>
 </body>
 </html>

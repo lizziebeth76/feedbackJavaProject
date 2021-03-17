@@ -1,5 +1,6 @@
 package com.tts.feedback.controller;
 
+import com.tts.feedback.model.TweetDisplay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.tts.feedback.model.Tweet;
 import com.tts.feedback.model.User;
 import com.tts.feedback.service.TweetService;
@@ -32,16 +34,16 @@ public class TweetController {
         if (filter == null) {
             filter = "all";
         }
-        if (filter.equalsIgnoreCase("following")) {
-            List<User> following = loggedInUser.getFollowing();
-            tweets = tweetService.findAllByUsers(following);
-            model.addAttribute("filter", filter);
-        } else {
-            tweets = tweetService.findAll();
-            model.addAttribute("filter", filter);
-        }
-        model.addAttribute("tweetList", tweets);
-        return "feed";
+//        if (filter.equalsIgnoreCase("following")) {
+//            List<User> following = loggedInUser.getFollowing();
+//            tweets = tweetService.findAllByUsers(following);
+//            model.addAttribute("filter", filter);
+//        } else {
+//            tweets = tweetService.findAll();
+//            model.addAttribute("filter", filter);
+//        }
+//        model.addAttribute("tweetList", tweets);
+//        return "feed";
     }
 
     @GetMapping(value = "/tweets/new")
@@ -61,12 +63,14 @@ public class TweetController {
         }
         return "newTweet";
     }
-
-    @GetMapping(value = "/tweets/{tag}")
-    public String getTweetsByTag(@PathVariable(value = "tag") String tag, Model model) {
-        List<TweetDisplay> tweets = tweetService.findAllWithTag(tag);
-        model.addAttribute("tweetList", tweets);
-        model.addAttribute("tag", tag);
-        return "taggedTweets";
+//    NEW CODE FROM NICK'S ECOMMERCE - MEANT TO DEAL WITH SURVEY RESULTS
+    @PostMapping("/cart")
+    public String addToCart(@RequestParam long id) {
+        System.out.println(id);
+        Product p = productService.findById(id);
+        Map<Product, Integer> cart = cart();
+        System.out.println("Posting to cart" + cart);
+        setQuantity(p, cart.getOrDefault(p, 0) + 1);
+        return "redirect:/cart";
     }
 }

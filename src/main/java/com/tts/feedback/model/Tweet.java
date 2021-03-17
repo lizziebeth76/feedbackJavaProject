@@ -38,6 +38,15 @@ public class Tweet {
     @CreationTimestamp
     private Date createdAt;
 
+    public Tweet() {
+    }
+
+    public Tweet(User user, String message, Date createdAt) {
+        this.user = user;
+        this.message = message;
+        this.createdAt = createdAt;
+    }
+
     public User getUser() {
         return user;
     }
@@ -61,4 +70,5 @@ public class Tweet {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
 }

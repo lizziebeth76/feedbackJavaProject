@@ -36,10 +36,9 @@ public class AuthorizationController {
         }
         if (!bindingResult.hasErrors()) {
             userService.saveNewUser(user);
-            model.addAttribute("success", "Sign up successful!");
             model.addAttribute("user", new User());
         }
-        return "registration";
+        return "logIn";
     }
 
 }
